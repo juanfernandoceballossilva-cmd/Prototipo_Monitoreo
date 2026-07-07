@@ -1,95 +1,47 @@
-# Clocky - A Kid-Friendly Sleep Training Clock for Guition JC8048W550C_I
+# Bare minimum sketch for the Sunton aka Cheap Yellow Display (CYD) boards. ESP32_1732S019N/C, 2424S012N/C, 2432S024R/C/N, 2432S028R, 2432S032N/R/C, 3248S035R/C, 4827S043R/C, 4848S040C, 8048S050N/C and 8048S070N/C
 
-A fun ESP32-based sleep training clock that helps children know when it's time to wake up or go to bed using friendly Spider-Man animations and color changes. Built for the Guition JC8048W550C_I ESP32-S3 5-inch IPS display board.
+For [PlatformIO](https://platformio.org/)
 
-## Features
+[![Platform IO CI](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml/badge.svg)](https://github.com/rzeldent/esp32-smartdisplay-demo/actions/workflows/main.yml)
 
-- Digital clock display with date
-- Customizable wake-up and bedtime settings
-- Friendly Spider-Man animations for bedtime notifications
-- Dynamic background colors (bright for day, dark for night)
-- Easy-to-use touch interface for time adjustments
-- WiFi-enabled for automatic time synchronization
-- Clean, modern UI with smooth transitions
+This is a demo application for the [esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay) library that is intended to be used in [PlatformIO](https://platformio.org/).
+See [https://github.com/rzeldent/esp32-smartdisplay](https://github.com/rzeldent/esp32-smartdisplay/) for more information about the driver library.
 
-## Hardware Requirements
+> [!WARNING]
+> Do not forget to clone this repository with submodules: `git clone --recurse-submodules`!
+> This is required to also have the latest version of the [Sunton boards definitions](https://github.com/rzeldent/platformio-espressif32-sunton).
 
-- Guition JC8048W550C_I ESP32-S3 5-inch IPS display board (16M FLASH, 8M PSRAM)
-- USB-C cable for programming
-- 5V power supply
+Example with sound! (if WiFi credentials are provided and speaker attached)
 
-## Software Requirements
+![Example](assets/PXL_20231130_225143662.jpg)
 
-- PlatformIO IDE
-- Visual Studio Code
-- ESP32 Arduino framework
-- LVGL library (included)
+## Version history
 
-## Installation
-
-1. Clone the repository with submodules:
-   ```bash
-   git clone --recurse-submodules https://github.com/mattjohnpowell/clocky.git
-   ```
-
-2. Copy `config.h.local` to `config.h` and update with your settings:
-   ```cpp
-   #define WIFI_SSID "your_wifi_ssid"
-   #define WIFI_PASSWORD "your_wifi_password"
-   #define SELECTED_TIMEZONE "your_timezone"  // e.g., "EST5EDT,M3.2.0,M11.1.0"
-   ```
-
-3. Open the project in PlatformIO IDE (Visual Studio Code)
-
-4. Install required board definition:
-   - Copy the board file `boards/esp32-8048S050C.json` to your PlatformIO boards directory
-   - Or add the boards repository to your `platformio.ini`:
-     ```ini
-     [env:esp32-8048S050C]
-     platform = espressif32
-     board = esp32-8048S050C
-     framework = arduino
-     ```
-
-5. Build and upload the project to your device
-
-## Usage
-
-1. Power on the device - it will automatically connect to WiFi and sync time
-2. Use the + and - buttons to adjust wake-up and sleep times
-3. The display will show:
-   - Current time in large digits
-   - Current date
-   - Wake-up time setting
-   - Bedtime setting
-   - Spider-Man animations near bedtime
-   - Day/night appropriate background colors
-
-## Customization
-
-The clock face and animations can be customized by modifying:
-- UI layout in `ui_scrMain.c`
-- Background colors in `style_bg_day` and `style_bg_night`
-- Animation timing in `BEDTIME_WINDOW_HOURS`
-- Spider-Man images (replace `spiderman.c` and `spidermansleep.c`)
-
-## Troubleshooting
-
-- If WiFi doesn't connect, check your credentials in `config.h`
-- If time doesn't sync, verify your timezone setting
-- For display issues, ensure correct board selection in PlatformIO
-- USB CDC may require a 5-second delay on some systems
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[Your chosen license]
-
-## Acknowledgments
-
-- Based on the esp32-smartdisplay library
-- Uses LVGL for the user interface
-- Spider-Man images and references are property of their respective owners
+- December 2024
+  - Use EEZ Studio for designing the GUI [https://www.envox.eu/studio/studio-introduction/](https://www.envox.eu/studio/studio-introduction/)
+- August 2024
+  - LVGL 9.2
+  - New boards
+- July 2024
+  - LVGL 9.1
+  - Use release 2.0.10
+- June 2024
+  - Update SquareLine project to 1.4.1
+- July 2024
+  - LVGL 9.1
+  - Use release 2.0.10
+- June 2024
+  - Update SquareLine project to 1.4.1
+- March 2024
+  - Added rotate button
+  - Removed radio (and wifi dependencies)
+- December 2023
+  - Release 2.0.0
+  - Updated demo with sound
+- November 2023
+  - Use of new library
+  - Updated demo application with sound
+- March 2023
+  - Demo application created
+- October 2023
+  - Updated UI using [SquareLine Studio](https://squareline.io). This is a graphical UI design tool.
